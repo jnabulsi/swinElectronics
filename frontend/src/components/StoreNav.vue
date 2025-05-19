@@ -16,8 +16,8 @@
 
       <!-- Admin options -->
       <template v-if="app.isAdmin">
-        <v-btn text to="/admin/add-product">Add Product</v-btn>
-        <v-btn text to="/admin/sales">Sales Data</v-btn>
+        <v-btn text to="/admin/addProduct">Add Product</v-btn>
+        <v-btn text to="/admin/salesData">Sales Data</v-btn>
         <v-btn text @click="app.logout">Admin Logout</v-btn>
       </template>
 
