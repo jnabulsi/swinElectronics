@@ -1,7 +1,8 @@
 <template>
-  <HelloWorld />
+
+  <h1>Orders Page</h1>
 </template>
 
 <script setup>
-  //
+//
 </script>
