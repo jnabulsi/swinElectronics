@@ -21,8 +21,8 @@
         <v-btn text @click="app.logout">Admin Logout</v-btn>
       </template>
 
-      <v-btn text @click="logOut">Logout</v-btn>
       <template v-if="!app.isAdmin">
+        <v-btn text @click="logOut">Logout</v-btn>
       </template>
     </template>
 
