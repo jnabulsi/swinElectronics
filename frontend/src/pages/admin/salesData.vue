@@ -6,27 +6,30 @@
         <h1 class="text-h4">Sales Data</h1>
       </v-col>
     </v-row>
-
-    <!-- Sales List -->
+    <!-- Sales List Wrapped in a Card -->
     <v-row justify="center">
       <v-col cols="12" md="6">
-        <v-list two-line>
-          <v-list-item v-for="item in sales" :key="item.id">
-            <v-list-item-content>
+        <v-card elevation="2" class="pa-4">
+          <v-card-title class="text-h6">Sales Summary</v-card-title>
+          <v-divider class="mb-2" />
+
+          <v-list>
+            <v-list-item v-for="(item, index) in sales" :key="item.id"
+              :class="{ 'border-b': index !== sales.length - 1 }">
               <v-list-item-title>{{ item.title }}</v-list-item-title>
               <v-list-item-subtitle>
-                {{ item.quantity }} sold – ${{ (item.quantity * item.price).toFixed(2) }} </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </v-col>
-    </v-row>
+                {{ item.quantity }} sold – ${{ (item.quantity * item.price).toFixed(2) }}
+              </v-list-item-subtitle>
+            </v-list-item>
+          </v-list>
 
-    <!-- Totals -->
-    <v-row justify="center" class="mt-4">
-      <v-col cols="12" md="6" class="text-right">
-        <div><strong>Total Items Sold:</strong> {{ totalQuantity }}</div>
-        <div><strong>Total Sales Value:</strong> ${{ totalValue }}</div>
+          <v-divider class="my-4" />
+
+          <div class="text-right">
+            <div><strong>Total Items Sold:</strong> {{ totalQuantity }}</div>
+            <div><strong>Total Sales Value:</strong> ${{ totalValue }}</div>
+          </div>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -34,14 +37,15 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import salesData from '@/data/sales.json'
+import { getSalesData } from '@/api/sales'
 
 const sales = ref([])
 const totalQuantity = ref(0)
 const totalValue = ref(0)
 
-onMounted(() => {
-  sales.value = salesData
+onMounted(async () => {
+  const res = await getSalesData()
+  sales.value = res.data
 
   totalQuantity.value = sales.value.reduce((sum, item) => sum + item.quantity, 0)
   totalValue.value = sales.value.reduce((sum, item) => sum + item.quantity * item.price, 0).toFixed(2)

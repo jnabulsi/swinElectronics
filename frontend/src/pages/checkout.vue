@@ -7,28 +7,33 @@
       </v-col>
     </v-row>
 
-    <!-- Item Titles -->
+    <!-- Checkout List Wrapped in a Card -->
     <v-row justify="center">
       <v-col cols="12" md="6">
-        <v-list two-line>
-          <v-list-item v-for="product in cartData" :key="product.id">
-            <v-list-item-title>{{ product.title }}</v-list-item-title>
-            <v-list-item-subtitle>${{ product.price.toFixed(2) }}</v-list-item-subtitle>
-          </v-list-item>
-        </v-list>
-      </v-col>
-    </v-row>
-    <!-- Total Price -->
-    <v-row justify="center" class="mt-4">
-      <v-col cols="12" md="4" class="text-right">
-        <strong>Total:</strong> ${{ total }}
-      </v-col>
-    </v-row>
+        <v-card elevation="2" class="pa-4">
+          <v-card-title class="text-h6">Checkout Summary</v-card-title>
+          <v-divider class="mb-2" />
 
+          <v-list two-line>
+            <v-list-item v-for="(product, index) in products" :key="product.id"
+              :class="{ 'border-b': index !== products.length - 1 }">
+              <v-list-item-title>{{ product.title }}</v-list-item-title>
+              <v-list-item-subtitle>${{ product.price.toFixed(2) }}</v-list-item-subtitle>
+            </v-list-item>
+          </v-list>
+
+          <v-divider class="my-4" />
+
+          <div class="text-right">
+            <div><strong>Total:</strong> ${{ total }}</div>
+          </div>
+        </v-card>
+      </v-col>
+    </v-row>
     <!-- Purchase Button -->
     <v-row justify="center" class="mt-6">
       <v-col cols="12" md="4" class="text-center">
-        <v-btn color="primary" size="large" block @click="purchase">
+        <v-btn color="primary" size="large" block @click="handlePurchase">
           Complete Purchase
         </v-btn>
       </v-col>
@@ -38,17 +43,36 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-// TODO: Replace fake data in cart.json with data from api
-import cartData from '@/data/cart.json'
+import { purchase } from '@/api/sales'
+import { getCart } from '@/api/cart'
+import { getProductById } from '@/api/products'
 
 const total = ref(0)
+const products = ref([])
 
-onMounted(() => {
-  total.value = cartData.reduce((sum, item) => sum + item.price, 0).toFixed(2)
+onMounted(async () => {
+  const cartRes = await getCart()
+
+  // Fetch all products in parallel
+  const enriched = await Promise.all(
+    cartRes.data.map(async (item) => {
+      const productRes = await getProductById(item.productId)
+      return {
+        ...productRes.data,
+        quantity: item.quantity,
+      }
+    })
+  )
+
+  products.value = enriched
+
+  // Calculate total price
+  total.value = enriched.reduce((sum, item) => sum + item.price * item.quantity, 0)
 })
 
-const purchase = () => {
-  console.log('Purchase submitted:', cartItems.value)
-  // TODO: Hook up real purchase logic or confirmation
+const handlePurchase = async () => {
+  const productIds = products.value.map(item => item.id)
+  console.log('Purchase submitted:', productIds)
+  await purchase(productIds)
 }
 </script>

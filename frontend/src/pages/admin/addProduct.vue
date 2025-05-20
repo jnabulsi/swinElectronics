@@ -33,6 +33,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { addProduct } from '@/api/products'
 
 const formRef = ref(null)
 const formValid = ref(false)
@@ -47,7 +48,7 @@ const category = ref('')
 const requiredRule = (v) => !!v || 'This field is required'
 const positiveNumberRule = (v) => v > 0 || 'Price must be greater than 0'
 
-const handleAddProduct = () => {
+const handleAddProduct = async () => {
   if (!formRef.value?.validate()) return
 
   const product = {
@@ -58,10 +59,16 @@ const handleAddProduct = () => {
     category: category.value,
   }
 
-  console.log('Product to add:', product)
-  // TODO: Replace with real API call later
-  alert('Product submitted!')
+  try {
+    const res = await addProduct(product)
+    console.log('Product submission response:', res)
 
-  formRef.value.reset()
+    alert('Product submitted!')
+
+    formRef.value.reset()
+  } catch (err) {
+    console.error('Failed to add product:', err)
+    alert('Failed to submit product')
+  }
 }
 </script>

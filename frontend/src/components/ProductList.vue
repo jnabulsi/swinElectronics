@@ -18,7 +18,7 @@
         </div>
       </v-card-text>
 
-      <v-card-actions v-if="showAddToCartButton">
+      <v-card-actions v-if="showAddToCartButton && app.isLoggedIn">
         <v-btn color="primary" block @click="$emit('button-click', product)">
           Add To Cart
         </v-btn>
@@ -34,6 +34,8 @@
 </template>
 
 <script setup>
+import { useAppStore } from '@/stores/app'
+const app = useAppStore()
 defineProps({
   products: Array,
   showAddToCartButton: Boolean,

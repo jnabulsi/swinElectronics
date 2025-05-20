@@ -15,22 +15,15 @@
     </v-row>
   </v-container>
 </template>
-
 <script setup>
 import { ref, onMounted } from 'vue'
-// TODO: Replace fake data in orders.json with data from api
-import productsData from '@/data/orders.json'
 import ProductList from '@/components/ProductList.vue'
+import { getOrders } from '@/api/orders'
 
 const products = ref([])
 
-const getImagePath = (filename) =>
-  new URL(`../assets/${filename}`, import.meta.url).href
-
-onMounted(() => {
-  products.value = productsData.map((product) => ({
-    ...product,
-    image: getImagePath(product.image),
-  }))
+onMounted(async () => {
+  const res = await getOrders()
+  products.value = res.data
 })
 </script>

@@ -25,31 +25,36 @@
     </v-row>
   </v-container>
 </template>
-
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-// TODO: Replace fake data in products.json with data from api
-import productsData from '@/data/products.json'
 import ProductList from '@/components/ProductList.vue'
+
+// Import API functions
+import { getProducts } from '@/api/products'
+import { addToCart } from '@/api/cart'
 
 const products = ref([])
 const searchQuery = ref('')
 const selectedCategory = ref(null)
 const categories = ref([])
 
-
 const getImagePath = (filename) => {
   return new URL(`../assets/${filename}`, import.meta.url).href
 }
 
-onMounted(() => {
-  products.value = productsData.map((product) => ({
-    ...product,
-    image: getImagePath(product.image),
-  }))
+onMounted(async () => {
+  try {
+    const res = await getProducts()
+    products.value = res.data.map((product) => ({
+      ...product,
+      image: getImagePath(product.image)
+    }))
 
-  const uniqueCategories = [...new Set(products.value.map(p => p.category))]
-  categories.value = uniqueCategories
+    const uniqueCategories = [...new Set(products.value.map(p => p.category))]
+    categories.value = uniqueCategories
+  } catch (error) {
+    console.error('Failed to load products:', error)
+  }
 })
 
 const filteredProducts = computed(() => {
@@ -60,8 +65,15 @@ const filteredProducts = computed(() => {
   })
 })
 
-const handleAddToCart = (product) => {
-  console.log('Add to cart:', product)
-  // TODO: Add to cart logic
+const handleAddToCart = async (product) => {
+  try {
+    await addToCart({
+      productId: product.id,
+    })
+    console.log('Added to cart:', product.title)
+  } catch (error) {
+    console.error('Failed to add to cart:', error)
+    alert('Could not add item to cart.')
+  }
 }
 </script>

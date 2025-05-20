@@ -10,7 +10,7 @@
     <!-- Cart Items -->
     <v-row justify="center">
       <v-col cols="12" md="8">
-        <ProductList :products="products" show-remove-from-cart-button="true" @button-click="handleRemoveFromCart" />
+        <ProductList :products="products" :show-remove-from-cart-button="true" @button-click="handleRemoveFromCart" />
       </v-col>
     </v-row>
 
@@ -27,10 +27,11 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-// TODO: Replace fake data in cart.json with data from api
-import productsData from '@/data/cart.json'
-import ProductList from '@/components/ProductList.vue'
 import { useRouter } from 'vue-router'
+import ProductList from '@/components/ProductList.vue'
+
+import { getCart, removeFromCart } from '@/api/cart'
+import { getProductById } from '@/api/products'
 
 const router = useRouter()
 const products = ref([])
@@ -38,16 +39,25 @@ const products = ref([])
 const getImagePath = (filename) =>
   new URL(`../assets/${filename}`, import.meta.url).href
 
-onMounted(() => {
-  products.value = productsData.map((product) => ({
-    ...product,
-    image: getImagePath(product.image),
-  }))
+onMounted(async () => {
+  const cartRes = await getCart()
+  const enriched = []
+
+  for (const item of cartRes.data) {
+    const productRes = await getProductById(item.productId)
+    enriched.push({
+      ...productRes.data,
+      quantity: item.quantity,
+      image: getImagePath(productRes.data.image)
+    })
+  }
+
+  products.value = enriched
 })
 
-const handleRemoveFromCart = (product) => {
-  console.log('Remove from cart:', product)
-  // TODO: Remove logic
+const handleRemoveFromCart = async (product) => {
+  await removeFromCart(product.id)
+  products.value = products.value.filter(p => p.id !== product.id)
 }
 
 const goToCheckout = () => {
