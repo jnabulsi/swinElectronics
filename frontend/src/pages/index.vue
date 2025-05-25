@@ -45,6 +45,8 @@ const getImagePath = (filename) => {
 onMounted(async () => {
   try {
     const res = await getProducts()
+    console.log(res.data)
+
     products.value = res.data.map((product) => ({
       ...product,
       image: getImagePath(product.image)

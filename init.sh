@@ -35,7 +35,7 @@ pip install -r requirements.txt
 BACKEND_PID=""
 
 # Start FastAPI in background
-uvicorn main:app --reload --host 0.0.0.0 --port 8000 &
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000 &
 BACKEND_PID=$!
 deactivate
 cd ..
@@ -48,7 +48,7 @@ npm run dev &
 FRONTEND_PID=$!
 cd ..
 
-echo "[*] Go to localhost:8080 to see frontend"
+echo "[*] Go to localhost:3000 to see frontend"
 echo "[*] CTL-C to stop dev servers"
 
 # Handle shutdown
