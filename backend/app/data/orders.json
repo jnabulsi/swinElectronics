@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "items": [
+      {
+        "productId": 1,
+        "quantity": 3
+      }
+    ],
+    "total": 89.97,
+    "timestamp": "2025-05-30 01:48:12.089735"
+  },
+  {
+    "id": 2,
+    "items": [
+      {
+        "productId": 1,
+        "quantity": 3
+      }
+    ],
+    "total": 89.97,
+    "timestamp": "2025-05-30 01:48:43.212763"
+  },
+  {
+    "id": 3,
+    "items": [
+      {
+        "productId": 2,
+        "quantity": 1
+      },
+      {
+        "productId": 3,
+        "quantity": 2
+      }
+    ],
+    "total": 489.97,
+    "timestamp": "2025-05-30 01:56:20.934229"
+  },
+  {
+    "id": 4,
+    "items": [
+      {
+        "productId": 2,
+        "quantity": 1
+      }
+    ],
+    "total": 89.99,
+    "timestamp": "2025-05-30 01:58:43.103663"
+  },
+  {
+    "id": 5,
+    "items": [
+      {
+        "productId": 2,
+        "quantity": 1
+      }
+    ],
+    "total": 89.99,
+    "timestamp": "2025-05-30 02:00:16.062642"
+  }
+]

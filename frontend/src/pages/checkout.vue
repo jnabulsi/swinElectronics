@@ -17,8 +17,13 @@
           <v-list two-line>
             <v-list-item v-for="(product, index) in products" :key="product.id"
               :class="{ 'border-b': index !== products.length - 1 }">
-              <v-list-item-title>{{ product.title }}</v-list-item-title>
-              <v-list-item-subtitle>${{ product.price.toFixed(2) }}</v-list-item-subtitle>
+              <v-list-item-title>
+                {{ product.title }} (Amount: {{ product.quantity }})
+              </v-list-item-title>
+              <v-list-item-subtitle>
+                ${{ (product.price * product.quantity).toFixed(2) }}
+              </v-list-item-subtitle>
+
             </v-list-item>
           </v-list>
 
@@ -43,10 +48,12 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { purchase } from '@/api/sales'
 import { getCart } from '@/api/cart'
 import { getProductById } from '@/api/products'
+import { completePurchase } from '@/api/orders'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const total = ref(0)
 const products = ref([])
 
@@ -66,13 +73,13 @@ onMounted(async () => {
 
   products.value = enriched
 
-  // Calculate total price
   total.value = enriched.reduce((sum, item) => sum + item.price * item.quantity, 0)
 })
 
 const handlePurchase = async () => {
   const productIds = products.value.map(item => item.id)
   console.log('Purchase submitted:', productIds)
-  await purchase(productIds)
+  await completePurchase(productIds)
+  router.push('/')
 }
 </script>

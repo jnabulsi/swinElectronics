@@ -12,13 +12,3 @@ export const getSalesData = async () => {
 }
 
 
-// export const purchase = (productIds) => axios.post('/api/purchase', { productIds })
-
-// FAKE purchase method
-export const purchase = async (productIds) => {
-  console.log('[Mock Purchase] Products:', productIds)
-  return {
-    data: { success: true }
-  }
-}
-
