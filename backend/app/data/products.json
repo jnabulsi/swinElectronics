@@ -5,7 +5,8 @@
     "price": 29.99,
     "description": "Ergonomic wireless mouse with USB receiver.",
     "image": "mouse.jpg",
-    "category": "Peripherals"
+    "category": "Peripherals",
+    "onSale": false
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "price": 89.99,
     "description": "RGB mechanical keyboard with blue switches.",
     "image": "keyboard.jpg",
-    "category": "Peripherals"
+    "category": "Peripherals",
+    "onSale": false
   },
   {
     "id": 3,
@@ -21,6 +23,16 @@
     "price": 199.99,
     "description": "24-inch Full HD monitor with IPS panel.",
     "image": "monitor.jpg",
-    "category": "Displays"
+    "category": "Displays",
+    "onSale": false
+  },
+  {
+    "id": 4,
+    "title": "Another Product",
+    "price": 12.0,
+    "description": "AnotherProduct",
+    "image": "Computer.jpg",
+    "category": "Computer",
+    "onSale": false
   }
 ]
