@@ -27,3 +27,13 @@ class StoreCatalog:
         self.save(products)
         return product_data
 
+    def update_product(self, product_id: int, updated_data: Product) -> Product | None:
+        products = self.load()
+        for i, product in enumerate(products):
+            if product.id == product_id:
+                updated_data.id = product_id  # Ensure ID stays the same
+                products[i] = updated_data
+                self.save(products)
+                return updated_data
+        return None
+

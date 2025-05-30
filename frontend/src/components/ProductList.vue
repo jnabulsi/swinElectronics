@@ -1,6 +1,10 @@
 <template>
   <v-container class="py-8" style="max-width: 600px;">
     <v-card v-for="product in products" :key="product.id" class="mb-4">
+      <v-chip v-if="product.onSale" color="green" text-color="white" size="large"
+        style="position: absolute; top: 8px; right: 8px; z-index: 1;">
+        On Sale
+      </v-chip>
       <v-img :src="product.image" height="200px" />
 
       <v-card-title class="d-flex justify-space-between align-center">

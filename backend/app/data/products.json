@@ -6,7 +6,7 @@
     "description": "Ergonomic wireless mouse with USB receiver.",
     "image": "mouse.jpg",
     "category": "Peripherals",
-    "onSale": false
+    "onSale": true
   },
   {
     "id": 2,
@@ -24,15 +24,6 @@
     "description": "24-inch Full HD monitor with IPS panel.",
     "image": "monitor.jpg",
     "category": "Displays",
-    "onSale": false
-  },
-  {
-    "id": 4,
-    "title": "Another Product",
-    "price": 12.0,
-    "description": "AnotherProduct",
-    "image": "Computer.jpg",
-    "category": "Computer",
     "onSale": false
   }
 ]
