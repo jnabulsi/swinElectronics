@@ -3,8 +3,9 @@
     <v-card v-for="product in products" :key="product.id" class="mb-4">
       <v-img :src="product.image" height="200px" />
 
-      <v-card-title class="text-h6">
-        {{ product.title }}
+      <v-card-title class="d-flex justify-space-between align-center">
+        <span class="text-h6">{{ product.title }}</span>
+        <span v-if="showRemoveFromCartButton" class="text-h9">Quantity: {{ product.quantity }}</span>
       </v-card-title>
 
       <v-card-subtitle class="text-subtitle-1">
