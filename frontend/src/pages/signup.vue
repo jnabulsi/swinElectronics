@@ -10,6 +10,10 @@
 
           <v-text-field :rules="[rules.required, rules.email]" label="Email" v-model="email" type="email" prepend-inner-icon="mdi-email" />
 
+          <v-text-field :rules="[rules.required, rules.age]" label="Age" v-model="age" type="age" prepend-inner-icon="mdi-cake" />
+
+          <v-text-field :rules="[rules.required, rules.address]" label="Address" v-model="address" type="address" prepend-inner-icon="mdi-home" />
+
           <v-text-field :rules="[rules.required, rules.pw]" label="Password" v-model="password" type="password" prepend-inner-icon="mdi-lock" />
 
           <v-text-field :rules="[rules.required, rules.match]" label="Confirm Password" v-model="confirmPassword" type="password" prepend-inner-icon="mdi-lock-check" />
@@ -28,6 +32,8 @@ import { useRouter } from 'vue-router'
 
 const name = ref('')
 const email = ref('')
+const age = ref('')
+const address = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 const form = ref(null)
@@ -50,14 +56,13 @@ const rules = {
     (value && value.length >= 8) || "Password must be at least 8 characters",
   match: value =>
     (value == password.value) || "Password must match",
+  age: value =>
+    (!!value && Number.isInteger(Number(value)) && Number(value) < 110 )|| "Age must be a number and be under 110",
+  address: value =>
+    (!!value && value.length >= 5) || "Address must be at least 5 characters long",
 }
 
 const handleSignup = () => {
-  if (password.value !== confirmPassword.value) {
-    alert('Passwords do not match')
-    return
-  }
-
   app.signup(name.value, email.value, password.value)
   router.push('/')
 }
