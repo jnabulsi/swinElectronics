@@ -5,6 +5,7 @@ export const useAppStore = defineStore('app', {
   state: () => ({
     isLoggedIn: false,
     isAdmin: false,
+    user: null, // storing user obj
   }),
 
   actions: {
@@ -18,12 +19,12 @@ export const useAppStore = defineStore('app', {
       // TODO: Replace with actual API call
       try {
         const resp = await signup({ name, email, password })
+        this.user = resp.data
         this.isLoggedIn = true
         this.isAdmin = false
-        return resp.data
+        
       } catch (error) {
-        console.log(error.resp.data)
-        alert(JSON.stringify(error.resp.data))
+        console.log(error.response.data)
       }
     },
 
