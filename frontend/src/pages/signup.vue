@@ -13,7 +13,7 @@
 
           <v-text-field label="Confirm Password" v-model="confirmPassword" type="password"
             prepend-inner-icon="mdi-lock-check" required />
-
+          <!-- show success msg and direct to log in -->
           <v-btn type="submit" color="primary" block class="mt-4">Create Account</v-btn>
         </v-form>
       </v-card-text>
@@ -40,8 +40,12 @@ const handleSignup = () => {
     return
   }
 
-  app.signup(name.value, email.value, password.value)
-
+  app.signup({
+    name: name.value, 
+    email: email.value,
+    password: password.value
+  }
+)
   router.push('/')
 }
 </script>
