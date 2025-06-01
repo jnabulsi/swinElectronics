@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import { signup } from '@/api/account'
-import { ca } from 'vuetify/locale'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
@@ -21,11 +20,11 @@ export const useAppStore = defineStore('app', {
       // this.isAdmin = false
 
       try {
-          const resp = await signup({name, email, password})
-          this.isLoggedIn = true
-          this.isAdmin = false
-          return resp.data
-      } catch (error){
+        const resp = await signup({ name, email, password })
+        this.isLoggedIn = true
+        this.isAdmin = false
+        return resp.data
+      } catch (error) {
         throw error
       }
     },
