@@ -19,9 +19,10 @@ class Account(BaseModel):
 
     # SIDENOTE: The secret key is stored hard coded due to the restraints of the project. 
     # IT IS NOT MEANT FOR PRODUCTION PURPOSES.
-    SECRET_KEY = "21580a29e8dcc93f039db42a74eda13e5e2b1a52b9ee9c57f5619b50d6a7d936"
+    # SECRET_KEY = "21580a29e8dcc93f039db42a74eda13e5e2b1a52b9ee9c57f5619b50d6a7d936"
 
     # Remembers where the json file is
+class AccountService:
     def __init__(self, file_path: Path = ACCOUNTS_FILE):
         self.file_path = file_path
 

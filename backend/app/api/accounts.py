@@ -3,10 +3,10 @@ from typing import List
 from app.classes.Product import Product
 from app.classes.StoreCatalog import StoreCatalog
 from pathlib import Path
-from app.classes.Account import Account
+from app.classes.Account import Account, AccountService
 
 router = APIRouter()
-acct = Account()
+acct = AccountService()
 # ACCOUNTS_FILE = Path(__file__).parent.parent / "data" / "accounts.json"
 
 @router.post("/signup", response_model=Account)
