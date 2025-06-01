@@ -1,10 +1,11 @@
-<template>
+<template> 
   <v-container class="d-flex align-center justify-center" style="height: 100vh;">
     <v-card class="pa-6" min-width="400">
       <v-card-title class="text-h5">Sign Up</v-card-title>
 
       <v-card-text>
-        <v-form @submit.prevent="handleSignup">
+        <!-- automatically sets 'valid' to true only if all fields are valid -->
+        <v-form @submit.prevent="handleSignup" ref="form" v-model="valid"> 
           <v-text-field :rules="[rules.required, rules.name]" label="Name" v-model="name" prepend-inner-icon="mdi-account" ></v-text-field>
 
           <v-text-field :rules="[rules.required, rules.email]" label="Email" v-model="email" type="email" prepend-inner-icon="mdi-email" />
@@ -13,7 +14,7 @@
 
           <v-text-field :rules="[rules.required, rules.match]" label="Confirm Password" v-model="confirmPassword" type="password" prepend-inner-icon="mdi-lock-check" />
           <!-- show success msg and direct to log in -->
-          <v-btn type="submit" color="primary" block class="mt-4">Create Account</v-btn>
+          <v-btn type="submit" color="primary" block class="mt-4" :disabled="!isFormValid" >Create Account</v-btn>
         </v-form>
       </v-card-text>
     </v-card>
@@ -21,7 +22,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useAppStore } from '@/stores/app'
 import { useRouter } from 'vue-router'
 
@@ -29,6 +30,11 @@ const name = ref('')
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
+const form = ref(null)
+const valid = ref(false)
+
+// Value changes based on the updates on the text field values
+const isFormValid = computed(() => valid.value)
 
 const app = useAppStore()
 const router = useRouter()
