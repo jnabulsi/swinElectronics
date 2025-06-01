@@ -5,14 +5,13 @@
 
       <v-card-text>
         <v-form @submit.prevent="handleSignup">
-          <v-text-field label="Name" v-model="name" prepend-inner-icon="mdi-account" required />
+          <v-text-field :rules="[rules.required, rules.name]" label="Name" v-model="name" prepend-inner-icon="mdi-account" ></v-text-field>
 
-          <v-text-field label="Email" v-model="email" type="email" prepend-inner-icon="mdi-email" required />
+          <v-text-field :rules="[rules.required, rules.email]" label="Email" v-model="email" type="email" prepend-inner-icon="mdi-email" />
 
-          <v-text-field label="Password" v-model="password" type="password" prepend-inner-icon="mdi-lock" required />
+          <v-text-field :rules="[rules.required, rules.pw]" label="Password" v-model="password" type="password" prepend-inner-icon="mdi-lock" />
 
-          <v-text-field label="Confirm Password" v-model="confirmPassword" type="password"
-            prepend-inner-icon="mdi-lock-check" required />
+          <v-text-field :rules="[rules.required, rules.match]" label="Confirm Password" v-model="confirmPassword" type="password" prepend-inner-icon="mdi-lock-check" />
           <!-- show success msg and direct to log in -->
           <v-btn type="submit" color="primary" block class="mt-4">Create Account</v-btn>
         </v-form>
@@ -33,6 +32,19 @@ const confirmPassword = ref('')
 
 const app = useAppStore()
 const router = useRouter()
+
+// Defining rules for the data field
+const rules = {
+  required: value => !!value || 'Field is required',
+  name: value =>
+    /^[a-zA-Z\s']+$/.test(value) || "Name must only contain letters, spaces or apostrophes",
+  email: value =>
+    /.+@.+\..+/.test(value) || "E-mail must be valid",
+  pw: value => 
+    (value && value.length >= 8) || "Password must be at least 8 characters",
+  match: value =>
+    (value == password.value) || "Password must match",
+}
 
 const handleSignup = () => {
   if (password.value !== confirmPassword.value) {
