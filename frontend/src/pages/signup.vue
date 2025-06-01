@@ -40,12 +40,7 @@ const handleSignup = () => {
     return
   }
 
-  app.signup({
-    name: name.value, 
-    email: email.value,
-    password: password.value
-  }
-)
+  app.signup(name.value, email.value, password.value)
   router.push('/')
 }
 </script>

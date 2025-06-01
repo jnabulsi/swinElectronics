@@ -15,17 +15,15 @@ export const useAppStore = defineStore('app', {
     },
 
     async signup(name, email, password) {
-      // // TODO: Replace with actual API call
-      // this.isLoggedIn = true
-      // this.isAdmin = false
-
+      // TODO: Replace with actual API call
       try {
         const resp = await signup({ name, email, password })
         this.isLoggedIn = true
         this.isAdmin = false
         return resp.data
       } catch (error) {
-        throw error
+        console.log(error.resp.data)
+        alert(JSON.stringify(error.resp.data))
       }
     },
 
