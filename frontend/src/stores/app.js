@@ -15,10 +15,21 @@ export const useAppStore = defineStore('app', {
       this.isAdmin = email === 'admin' && password === 'admin' // fake admin check
     },
 
-    async signup(name, email, password) {
-      // TODO: Replace with actual API call
+    // async login(email, password){
+    //   const resp = await login({email, password})
+    //   this.user = resp.data
+    //   this.isLoggedIn = true
+    //   this.isAdmin = false
+    // },
+
+    async signup(name, email, password, age, address) {
       try {
-        const resp = await signup({ name, email, password })
+        const resp = await signup({ name, email, password, age, address })
+        console.log("this is the response:", resp)
+        console.log("user name:", resp)
+        console.log("user email:", resp)
+        console.log("user pw:", resp)
+
         this.user = resp.data
         this.isLoggedIn = true
         this.isAdmin = false

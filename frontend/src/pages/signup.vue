@@ -57,13 +57,13 @@ const rules = {
   match: value =>
     (value == password.value) || "Password must match",
   age: value =>
-    (!!value && Number.isInteger(Number(value)) && Number(value) < 110 )|| "Age must be a number and be under 110",
+    (!!value && Number.isInteger(Number(value)) && Number(value) < 110 && Number(value) > 0 )|| "Age must be a number and be under 110",
   address: value =>
     (!!value && value.length >= 5) || "Address must be at least 5 characters long",
 }
 
 const handleSignup = () => {
-  app.signup(name.value, email.value, password.value)
+  app.signup(name.value, email.value, password.value, Number(age.value), address.value)
   router.push('/')
 }
 </script>

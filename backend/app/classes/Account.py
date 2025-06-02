@@ -4,9 +4,8 @@ from pathlib import Path
 # import jwt
 # import bcrypt
 import json
-from typing import List
-import hashlib 
-import os
+from app.classes.User import User
+
 
 ACCOUNTS_FILE = Path(__file__).parent.parent / "data" / "accounts.json"
 
@@ -38,8 +37,14 @@ class AccountService:
             json.dump(accounts, f, indent=2)
 
     def register(self, name, email, password):
-        # check if user email already exists
         accounts = self.load_accounts()
+
+        # TO DO: check error handling
+        # Check if user email already exists
+        # for acct in accounts:
+        #     if acct["email"] == email:
+        #         raise ValueError("Email already in use.")
+
         id = max([acc.get('id', 0) for acc in accounts], default=0) + 1
 
         new_acct = {
@@ -51,8 +56,12 @@ class AccountService:
         
         accounts.append(new_acct)
         self.save_accounts(accounts)
-        return new_acct
+
+        # Create the subsequent user object
         
+
+        return new_acct
+    
         # DO THIS LATER
         # for account in accounts:
         #     if( email == account['email'] ):

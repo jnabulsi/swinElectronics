@@ -1,0 +1,9 @@
+[
+  {
+    "name": "gabe",
+    "email": "gabe@gmail.com",
+    "age": 41,
+    "address": "sample",
+    "isAdmin": false
+  }
+]
