@@ -26,11 +26,11 @@
         <v-btn text to="/admin/addProduct">Add Product</v-btn>
         <v-btn text to="/admin/salesData">Sales Data</v-btn>
         <v-btn text to="/admin/editProducts">Edit Products</v-btn>
-        <v-btn text @click="app.logout">Admin Logout</v-btn>
+        <v-btn text @click="app.logout" class="logout-btn">Admin Logout</v-btn>
       </template>
 
       <template v-if="!app.isAdmin">
-        <v-btn text @click="logOut">Logout</v-btn>
+        <v-btn text @click="logOut" class="logout-btn">Logout</v-btn>
       </template>
     </template>
 
@@ -63,5 +63,9 @@ const logOut = () => {
 <style scoped>
 .cursor-pointer {
   cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: hsla(0, 100%, 50%, 0.5);
 }
 </style>
