@@ -1,19 +1,20 @@
 <template>
   <v-app-bar app color="primary" dark>
     <!-- Logo / Home link -->
-     <div class="d-flex align-center">
-        <v-toolbar-title @click="goHome" class="cursor-pointer">
-          SwinElectronic
-        </v-toolbar-title>
+    <div class="d-flex align-center pa-4">
+      <v-toolbar-title @click="goHome" class=" pa-4 cursor-pointer font-weight-bold mr-2">
+        SwinElectronic
+      </v-toolbar-title>
 
-        <template v-if="app.isLoggedIn && app.user">  
-          <span class="ml-3" style="color: #BBDEFB; font-weight: bold; font-size: 1rem;">
-            Hello, {{ app.user.name }}
-          </span> 
-        </template>
-      </div>
+      <template v-if="app.isLoggedIn && app.user">
+        <div class="text-subtitle-2 pl-4" style="color: #E3F2FD;">
+          Hello, {{ app.user.name }}
+        </div>
+      </template>
+    </div>
+
     <v-spacer />
-    
+
     <v-btn text to="/">Products</v-btn>
     <!-- User options (if logged in) -->
     <template v-if="app.isLoggedIn">
