@@ -23,6 +23,10 @@
         <ProductList :products="filteredProducts" :showAddToCartButton="true" @button-click="handleAddToCart" />
       </v-col>
     </v-row>
+    <v-snackbar v-model="snackbar" :timeout="3000" color="success" location="top right" elevation="6" rounded="pill">
+      {{ snackbarMessage }}
+    </v-snackbar>
+
   </v-container>
 </template>
 <script setup>
@@ -37,6 +41,9 @@ const products = ref([])
 const searchQuery = ref('')
 const selectedCategory = ref(null)
 const categories = ref([])
+const snackbar = ref(false)
+const snackbarMessage = ref('')
+
 
 const getImagePath = (filename) => {
   return new URL(`../assets/${filename}`, import.meta.url).href
@@ -69,13 +76,13 @@ const filteredProducts = computed(() => {
 
 const handleAddToCart = async (product) => {
   try {
-    await addToCart({
-      productId: product.id,
-    })
-    console.log('Added to cart:', product.title)
+    await addToCart({ productId: product.id })
+    snackbarMessage.value = `Added "${product.title}" to cart`
+    snackbar.value = true
   } catch (error) {
     console.error('Failed to add to cart:', error)
     alert('Could not add item to cart.')
   }
 }
+
 </script>
