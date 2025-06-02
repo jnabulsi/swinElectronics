@@ -20,6 +20,7 @@
     <template v-if="app.isLoggedIn">
       <v-btn text to="/orders">Order History</v-btn>
       <v-btn text to="/cart">Shopping Cart</v-btn>
+      <!-- <v-btn text to="/cart">Account</v-btn> -->
 
       <!-- Admin options -->
       <template v-if="app.isAdmin">

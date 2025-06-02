@@ -2,13 +2,13 @@
   {
     "id": 1,
     "name": "example",
-    "pw": "example",
-    "isAdmin": true
+    "email": "admin@gmail.com",
+    "password": "09876543"
   },
   {
     "id": 2,
-    "name": "gabe",
-    "email": "gabe@gmail.com",
-    "password": "qwerty123"
+    "name": "chloe",
+    "email": "chloe@gmail.com",
+    "password": "12345678"
   }
 ]

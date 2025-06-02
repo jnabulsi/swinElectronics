@@ -5,5 +5,33 @@
     "age": 41,
     "address": "sample",
     "isAdmin": false
+  },
+  {
+    "name": "test",
+    "email": "test@gmail.com",
+    "age": 22,
+    "address": "sample",
+    "isAdmin": false
+  },
+  {
+    "name": "feo",
+    "email": "wp@gmail.com",
+    "age": 32,
+    "address": "fieow",
+    "isAdmin": false
+  },
+  {
+    "name": "chloe",
+    "email": "chloe@gmail.com",
+    "age": 22,
+    "address": "sample",
+    "isAdmin": false
+  },
+  {
+    "name": "vin",
+    "email": "vin@gmail.com",
+    "age": 23,
+    "address": "sample",
+    "isAdmin": false
   }
 ]

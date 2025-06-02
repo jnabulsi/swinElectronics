@@ -9,7 +9,6 @@
           <v-text-field :rules="[rules.required, rules.name]" label="Name" v-model="name" prepend-inner-icon="mdi-account" ></v-text-field>
 
           <v-text-field :rules="[rules.required, rules.email]" label="Email" v-model="email" type="email" prepend-inner-icon="mdi-email" />
-          <div v-if="signupError" class="text=red mb-2">{{ signupError }}</div>
 
           <v-text-field :rules="[rules.required, rules.age]" label="Age" v-model="age" type="age" prepend-inner-icon="mdi-cake" />
 
@@ -43,9 +42,6 @@ const valid = ref(false)
 // Value changes based on the updates on the text field values
 const isFormValid = computed(() => valid.value)
 
-// For signup error handling
-const signupError = ref('')
-
 const app = useAppStore()
 const router = useRouter()
 
@@ -66,15 +62,8 @@ const rules = {
     (!!value && value.length >= 5) || "Address must be at least 5 characters long",
 }
 
-const handleSignup = async () => {
-  // clear any errors set previously
-  signupError.value = ''
-
-  try{
-    await app.signup(name.value, email.value, password.value, Number(age.value), address.value)
-    router.push('/')
-  } catch (error) {
-    signupError.value = error.response?.data?.detail || 'Signup failed. Try again.'
-  }
+const handleSignup = () => {
+  app.signup(name.value, email.value, password.value, Number(age.value), address.value)
+  router.push('/')
 }
 </script>

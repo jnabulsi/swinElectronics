@@ -36,6 +36,7 @@ export const useAppStore = defineStore('app', {
         
       } catch (error) {
         console.log(error.response.data)
+        throw error
       }
     },
 

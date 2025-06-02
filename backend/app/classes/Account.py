@@ -41,9 +41,9 @@ class AccountService:
 
         # TO DO: check error handling
         # Check if user email already exists
-        # for acct in accounts:
-        #     if acct["email"] == email:
-        #         raise ValueError("Email already in use.")
+        for acct in accounts:
+            if acct["email"] == email:
+                raise ValueError("Email already in use.")
 
         id = max([acc.get('id', 0) for acc in accounts], default=0) + 1
 
@@ -56,9 +56,6 @@ class AccountService:
         
         accounts.append(new_acct)
         self.save_accounts(accounts)
-
-        # Create the subsequent user object
-        
 
         return new_acct
     
