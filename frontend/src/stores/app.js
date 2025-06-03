@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { signup } from '@/api/account'
+import { signup, login } from '@/api/account'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
@@ -9,18 +9,23 @@ export const useAppStore = defineStore('app', {
   }),
 
   actions: {
-    login(email, password) {
-      // TODO: Replace with actual API call
-      this.isLoggedIn = true
-      this.isAdmin = email === 'admin' && password === 'admin' // fake admin check
-    },
-
-    // async login(email, password){
-    //   const resp = await login({email, password})
-    //   this.user = resp.data
+    // login(email, password) {
+    //   // TODO: Replace with actual API call
     //   this.isLoggedIn = true
-    //   this.isAdmin = false
+    //   this.isAdmin = email === 'admin' && password === 'admin' // fake admin check
     // },
+
+    async login(email, password){
+      try{
+        const resp = await login({email, password})
+        this.user = resp.data
+        this.isLoggedIn = true
+        this.isAdmin = false
+      } catch(error) {
+        console.log(error.response.data)
+        throw error
+      }
+    },
 
     async signup(name, email, password, age, address) {
       try {

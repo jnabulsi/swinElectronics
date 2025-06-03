@@ -21,32 +21,27 @@
     "isAdmin": false
   },
   {
+    "id": null,
     "name": "chloe",
     "email": "chloe@gmail.com",
-    "age": 22,
+    "age": 34,
     "address": "sample",
     "isAdmin": false
   },
   {
-    "name": "vin",
-    "email": "vin@gmail.com",
+    "id": null,
+    "name": "gabe",
+    "email": "gabe@gmail.com",
     "age": 23,
     "address": "sample",
     "isAdmin": false
   },
   {
-    "name": "a",
-    "email": "jordanabulsi@gmail.com",
-    "age": 25,
-    "address": "11 street",
-    "isAdmin": false
-  },
-  {
     "id": null,
-    "name": "Test",
-    "email": "test@good.com",
-    "age": 100,
-    "address": "11 house",
+    "name": "Chloe",
+    "email": "chloe@gmail.com",
+    "age": 22,
+    "address": "sample",
     "isAdmin": false
   }
 ]

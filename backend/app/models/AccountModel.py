@@ -14,3 +14,6 @@ class AccountOut(BaseModel):
     email: EmailStr
     isAdmin: bool = False
 
+class LoginIn(BaseModel):
+    email: EmailStr
+    password: str

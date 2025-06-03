@@ -9,6 +9,7 @@
 
           <v-text-field :rules="[rules.required]" label="Password" v-model="password" type="password" required
             prepend-inner-icon="mdi-lock" />
+          <div v-if="loginError" class="text-red mb-2">{{ loginError }}</div>
 
           <v-btn type="submit" color="primary" block class="mt-4" :disabled="!isFormValid">Login</v-btn>
         </v-form>
@@ -27,6 +28,9 @@ const password = ref('')
 const form = ref(null)
 const valid = ref(false)
 
+// For login error handling
+const loginError = ref('')
+
 const isFormValid = computed(() => valid.value)
 
 const app = useAppStore()
@@ -34,12 +38,19 @@ const router = useRouter()
 
 const rules = {
   required: value => !!value || 'Field is required',
-  // email: value =>
-  //    /.+@.+\..+/.test(value) || "E-mail must be valid",
+  email: value =>
+     /.+@.+\..+/.test(value) || "E-mail must be valid",
 }
 
-const handleLogin = () => {
-  app.login(email.value, password.value)
-  router.push('/')
+const handleLogin = async () => {
+  // clear any errors set previously
+  loginError.value = ''
+  try{
+    await app.login(email.value, password.value)
+    router.push('/')
+  } catch(error){
+    loginError.value = error.response?.data?.detail || 'Log in failed. Try again.'
+  }
+
 }
 </script>

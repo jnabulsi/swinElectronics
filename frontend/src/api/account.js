@@ -4,4 +4,4 @@ import axios from 'axios'
 export const signup = ({ name, email, password, age, address }) => axios.post(`/api/signup`, { name, email, password, age, address })
 
 // Log into account
-// export const login = ({ email, password }) => axios.post(`/api/login`, { email, password })
+export const login = ({ email, password }) => axios.post(`/api/login`, { email, password })

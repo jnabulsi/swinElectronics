@@ -6,36 +6,17 @@
     "password": "09876543"
   },
   {
-    "id": 2,
-    "name": "chloe",
-    "email": "chloe@gmail.com",
-    "password": "12345678"
-  },
-  {
     "id": 3,
-    "name": "a",
-    "email": "jordanabulsi@gmail.com",
-    "password": "12345678"
+    "name": "gabe",
+    "email": "gabe@gmail.com",
+    "password": "gAAAAABoPuAoD0FftxdPX9mV7RMQPJYr7mJ9L3kbCj_3BRNeekXtov58ZfGaWO7bApFbTHEhdnSQlxkYV_MkQawAxjkD_GqVqA==",
+    "isAdmin": false
   },
   {
     "id": 4,
-    "name": "Test",
-    "email": "test@g.com",
-    "password": "09876543",
-    "isAdmin": false
-  },
-  {
-    "id": 5,
-    "name": "Test",
-    "email": "test@goo.com",
-    "password": "09876543",
-    "isAdmin": false
-  },
-  {
-    "id": 6,
-    "name": "Test",
-    "email": "test@good.com",
-    "password": "09876543",
+    "name": "Chloe",
+    "email": "chloe@gmail.com",
+    "password": "gAAAAABoPw6Edf0g-zY2PRSnix_p0JVgXULm7laIlXjhBG-ouNTd-zPMbNYBk69Dr2JlEdR6sO5Wuy42hQmp6PRPVF-ciPWohw==",
     "isAdmin": false
   }
 ]

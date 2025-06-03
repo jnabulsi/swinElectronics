@@ -1,7 +1,7 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from app.services.AccountService import AccountService
 from app.services.UserService import UserService
-from app.models.AccountModel import AccountOut, AccountIn
+from app.models.AccountModel import AccountOut, AccountIn, LoginIn
 from app.config import acctService, userService
 
 router = APIRouter()
@@ -22,3 +22,10 @@ def register_account(data: AccountIn):
 
     return new_account
 
+@router.post("/login", response_model=AccountOut)
+def login(data: LoginIn):
+    try:
+        account_found = acctService.login(data.email, data.password)
+        return account_found
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
