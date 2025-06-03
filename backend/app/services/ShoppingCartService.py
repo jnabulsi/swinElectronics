@@ -1,23 +1,17 @@
-import json
 from pathlib import Path
 from typing import List
-from app.classes.CartItem import CartItem
+from app.models.CartItemModel import CartItem
+from app.storage.JsonStore import read_json, write_json  
 
-CART_FILE = Path(__file__).parent.parent / "data" / "cart.json"
-
-class ShoppingCart:
-    def __init__(self, file_path: Path = CART_FILE):
+class ShoppingCartService:
+    def __init__(self, file_path: Path):
         self.file_path = file_path
 
     def load_cart(self) -> List[CartItem]:
-        if not self.file_path.exists():
-            return []
-        with open(self.file_path, "r") as f:
-            return [CartItem(**item) for item in json.load(f)]
+        return [CartItem(**item) for item in read_json(self.file_path)]
 
     def save_cart(self, items: List[CartItem]):
-        with open(self.file_path, "w") as f:
-            json.dump([item.dict() for item in items], f, indent=2)
+        write_json(self.file_path, [item.dict() for item in items])
 
     def get_cart(self) -> List[CartItem]:
         return self.load_cart()

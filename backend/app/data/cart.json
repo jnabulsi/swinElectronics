@@ -1,14 +1,10 @@
 [
   {
-    "productId": 1,
-    "quantity": 9
-  },
-  {
     "productId": 2,
-    "quantity": 3
+    "quantity": 1
   },
   {
-    "productId": 3,
+    "productId": 1,
     "quantity": 1
   }
 ]

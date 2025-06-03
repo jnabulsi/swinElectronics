@@ -10,5 +10,25 @@
     "name": "chloe",
     "email": "chloe@gmail.com",
     "password": "12345678"
+  },
+  {
+    "id": 3,
+    "name": "a",
+    "email": "jordanabulsi@gmail.com",
+    "password": "12345678"
+  },
+  {
+    "id": 4,
+    "name": "Test",
+    "email": "test@g.com",
+    "password": "09876543",
+    "isAdmin": false
+  },
+  {
+    "id": 5,
+    "name": "Test",
+    "email": "test@goo.com",
+    "password": "09876543",
+    "isAdmin": false
   }
 ]

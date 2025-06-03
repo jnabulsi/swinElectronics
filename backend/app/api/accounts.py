@@ -1,38 +1,24 @@
-from fastapi import APIRouter, HTTPException, Body
-from app.classes.Account import Account, AccountService 
-from app.classes.User import UserService
+from fastapi import APIRouter, HTTPException
+from app.services.AccountService import AccountService
+from app.services.UserService import UserService
+from app.models.AccountModel import AccountOut, AccountIn
+from app.config import acctService, userService
 
 router = APIRouter()
-acct = AccountService()
-user = UserService()
 
-@router.post("/signup", response_model=Account)
-def register_account(payload: dict = Body(...)): # instead of data: Account
-    print("Payload received:", payload)
-    # Extract Account fields
-    name = payload["name"]
-    email = payload["email"]
-    password = payload["password"]
-
-    # Extract User fields
-    age = payload["age"]
-    address = payload["address"]
-
-    print("Name:", name)
-    print("Email:", email)
-    print("Age:", age)
-    print("Address:", address)
-    print("Pw:", password)
-
+@router.post("/signup", response_model=AccountOut)
+def register_account(data: AccountIn):
     try:
-        new_account = acct.register(name, email, password)
+        new_account = acctService.register(data.name, data.email, data.password)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
-    user.create_user(name, email, age, address)
-    
+
+    userService.create_user(
+        name=data.name,
+        email=data.email,
+        age=data.age,
+        address=data.address
+    )
+
     return new_account
 
-# @router.post("/login", response_model=Account)
-# def login(payload: dict = Body(...)):
-#     email = payload["email"]
-#     password = payload["password"]

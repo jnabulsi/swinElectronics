@@ -1,23 +1,17 @@
-import json
 from pathlib import Path
-from typing import List
-from app.classes.Product import Product
+from typing import List, Optional
+from app.models.ProductModel import Product
+from app.storage.JsonStore import read_json, write_json  
 
-PRODUCTS_FILE = Path(__file__).parent.parent / "data" / "products.json"
-
-class StoreCatalog:
-    def __init__(self, file_path: Path = PRODUCTS_FILE):
+class ProductService:
+    def __init__(self, file_path: Path):
         self.file_path = file_path
 
     def load(self) -> List[Product]:
-        if not self.file_path.exists():
-            return []
-        with open(self.file_path, "r") as f:
-            return [Product(**p) for p in json.load(f)]
+        return [Product(**p) for p in read_json(self.file_path)]
 
     def save(self, products: List[Product]):
-        with open(self.file_path, "w") as f:
-            json.dump([p.dict() for p in products], f, indent=2)
+        write_json(self.file_path, [p.dict() for p in products])
 
     def add_product(self, product_data: Product) -> Product:
         products = self.load()
@@ -27,11 +21,11 @@ class StoreCatalog:
         self.save(products)
         return product_data
 
-    def update_product(self, product_id: int, updated_data: Product) -> Product | None:
+    def update_product(self, product_id: int, updated_data: Product) -> Optional[Product]:
         products = self.load()
         for i, product in enumerate(products):
             if product.id == product_id:
-                updated_data.id = product_id  # Ensure ID stays the same
+                updated_data.id = product_id
                 products[i] = updated_data
                 self.save(products)
                 return updated_data

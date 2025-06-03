@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Wireless Mouse",
-    "price": 29.99,
+    "price": 29.95,
     "description": "Ergonomic wireless mouse with USB receiver.",
     "image": "mouse.jpg",
     "category": "Peripherals",
@@ -25,5 +25,14 @@
     "image": "monitor.jpg",
     "category": "Displays",
     "onSale": false
+  },
+  {
+    "id": 4,
+    "title": "test",
+    "price": 60.0,
+    "description": "a test",
+    "image": "something.jpg",
+    "category": "Computer",
+    "onSale": true
   }
 ]

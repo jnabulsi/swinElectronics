@@ -18,7 +18,10 @@
             <v-list-item v-for="(item, index) in products" :key="item.id"
               :class="{ 'border-b': index !== products.length - 1 }">
               <v-list-item-title>{{ item.title }}</v-list-item-title>
-              <v-list-item-subtitle>Price: ${{ item.price.toFixed(2) }}</v-list-item-subtitle>
+              <v-list-item-subtitle>
+                Price: ${{ typeof item.price === 'number' ? item.price.toFixed(2) : item.price }}
+              </v-list-item-subtitle>
+
               <v-list-item-subtitle>Description: {{ item.description }}</v-list-item-subtitle>
               <v-list-item-subtitle>Image: {{ item.image }}</v-list-item-subtitle>
               <v-list-item-subtitle>Category: {{ item.category }}</v-list-item-subtitle>
@@ -82,10 +85,12 @@ const openEditModal = (product) => {
   editForm.value = { ...product } // shallow copy to allow editing
   editDialog.value = true
 }
-
 const saveChanges = async () => {
+  editForm.value.price = parseFloat(editForm.value.price)
   await updateProduct(selectedProduct.value.id, editForm.value)
-  Object.assign(selectedProduct.value, editForm.value) // update in-place
+  Object.assign(selectedProduct.value, editForm.value)
   editDialog.value = false
 }
+
+
 </script>

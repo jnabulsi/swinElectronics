@@ -4,9 +4,11 @@
       <v-card-title class="text-h5">Login</v-card-title>
       <v-card-text>
         <v-form @submit.prevent="handleLogin" ref="form" v-model="valid">
-          <v-text-field :rules="[rules.required, rules.email]" label="Email" v-model="email" type="email" required prepend-inner-icon="mdi-email" />
+          <v-text-field :rules="[rules.required, rules.email]" label="Email" v-model="email" type="email" required
+            prepend-inner-icon="mdi-email" />
 
-          <v-text-field :rules="[rules.required]" label="Password" v-model="password" type="password" required prepend-inner-icon="mdi-lock" />
+          <v-text-field :rules="[rules.required]" label="Password" v-model="password" type="password" required
+            prepend-inner-icon="mdi-lock" />
 
           <v-btn type="submit" color="primary" block class="mt-4" :disabled="!isFormValid">Login</v-btn>
         </v-form>
@@ -32,8 +34,8 @@ const router = useRouter()
 
 const rules = {
   required: value => !!value || 'Field is required',
-  email: value =>
-    /.+@.+\..+/.test(value) || "E-mail must be valid",
+  // email: value =>
+  //    /.+@.+\..+/.test(value) || "E-mail must be valid",
 }
 
 const handleLogin = () => {

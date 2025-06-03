@@ -33,5 +33,12 @@
     "age": 23,
     "address": "sample",
     "isAdmin": false
+  },
+  {
+    "name": "a",
+    "email": "jordanabulsi@gmail.com",
+    "age": 25,
+    "address": "11 street",
+    "isAdmin": false
   }
 ]
