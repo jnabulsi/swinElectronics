@@ -30,5 +30,12 @@
     "email": "test@goo.com",
     "password": "09876543",
     "isAdmin": false
+  },
+  {
+    "id": 6,
+    "name": "Test",
+    "email": "test@good.com",
+    "password": "09876543",
+    "isAdmin": false
   }
 ]

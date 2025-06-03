@@ -40,5 +40,13 @@
     "age": 25,
     "address": "11 street",
     "isAdmin": false
+  },
+  {
+    "id": null,
+    "name": "Test",
+    "email": "test@good.com",
+    "age": 100,
+    "address": "11 house",
+    "isAdmin": false
   }
 ]
