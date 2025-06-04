@@ -43,5 +43,13 @@
     "age": 22,
     "address": "sample",
     "isAdmin": false
+  },
+  {
+    "id": null,
+    "name": "j",
+    "email": "jordanabuli@gmail.com",
+    "age": 12,
+    "address": "12 hp",
+    "isAdmin": false
   }
 ]
