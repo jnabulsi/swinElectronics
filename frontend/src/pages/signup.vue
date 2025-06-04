@@ -13,9 +13,6 @@
             prepend-inner-icon="mdi-email" />
           <div v-if="signupError" class="text-red mb-2">{{ signupError }}</div>
 
-          <v-text-field :rules="[rules.required, rules.age]" label="Age" v-model="age" type="age"
-            prepend-inner-icon="mdi-cake" />
-
           <v-text-field :rules="[rules.required, rules.address]" label="Address" v-model="address" type="address"
             prepend-inner-icon="mdi-home" />
 
@@ -39,7 +36,6 @@ import { useRouter } from 'vue-router'
 
 const name = ref('')
 const email = ref('')
-const age = ref('')
 const address = ref('')
 const password = ref('')
 const confirmPassword = ref('')
@@ -66,8 +62,6 @@ const rules = {
     (value && value.length >= 8) || "Password must be at least 8 characters",
   match: value =>
     (value == password.value) || "Password must match",
-  age: value =>
-    (!!value && Number.isInteger(Number(value)) && Number(value) < 110 && Number(value) > 0) || "Age must be a number and be under 110",
   address: value =>
     (!!value && value.length >= 5) || "Address must be at least 5 characters long",
 }
@@ -77,7 +71,7 @@ const handleSignup = async () => {
   signupError.value = ''
 
   try {
-    await app.signup(name.value, email.value, password.value, Number(age.value), address.value)
+    await app.signup(name.value, email.value, password.value, address.value)
     router.push('/')
   } catch (error) {
     signupError.value = error.response?.data?.detail || 'Signup failed. Try again.'

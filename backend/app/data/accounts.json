@@ -1,29 +1,18 @@
 [
   {
     "id": 1,
-    "name": "example",
-    "email": "admin@gmail.com",
-    "password": "09876543"
-  },
-  {
-    "id": 3,
-    "name": "gabe",
-    "email": "gabe@gmail.com",
-    "password": "gAAAAABoPuAoD0FftxdPX9mV7RMQPJYr7mJ9L3kbCj_3BRNeekXtov58ZfGaWO7bApFbTHEhdnSQlxkYV_MkQawAxjkD_GqVqA==",
-    "isAdmin": false
-  },
-  {
-    "id": 4,
-    "name": "Chloe",
+    "name": "chloe",
     "email": "chloe@gmail.com",
-    "password": "gAAAAABoPw6Edf0g-zY2PRSnix_p0JVgXULm7laIlXjhBG-ouNTd-zPMbNYBk69Dr2JlEdR6sO5Wuy42hQmp6PRPVF-ciPWohw==",
+    "password": "gAAAAABoP-jC9USmqgE3IFfpV0WvaiQ6sv-mYdokXAyiv8mCim_634bMyzc_Cku6KbdERk5I4BMiySU9rdwmfIosOcTzC4M5zA==",
+    "address": "sample",
     "isAdmin": false
   },
   {
-    "id": 7,
-    "name": "j",
-    "email": "jordanabuli@gmail.com",
-    "password": "VL\"Ps_vZCqbR4AU",
-    "isAdmin": false
+    "id": 2,
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "password": "gAAAAABoP-jC9USmqgE3IFfpV0WvaiQ6sv-mYdokXAyiv8mCim_634bMyzc_Cku6KbdERk5I4BMiySU9rdwmfIosOcTzC4M5zA==",
+    "address": "sample",
+    "isAdmin": true
   }
 ]

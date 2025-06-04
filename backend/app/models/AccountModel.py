@@ -5,13 +5,13 @@ class AccountIn(BaseModel):
     name: str
     email: EmailStr
     password: str
-    age: int
     address: str
 
 class AccountOut(BaseModel):
     id: int
     name: str
     email: EmailStr
+    address: str
     isAdmin: bool = False
 
 class LoginIn(BaseModel):

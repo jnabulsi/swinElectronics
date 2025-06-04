@@ -10,7 +10,7 @@ class AccountService:
         self.file_path = file_path
         self.f = Fernet(KEY)
 
-    def register(self, name, email, password):
+    def register(self, name, email, password, address):
         accounts = read_json(self.file_path)
         if any(a["email"] == email for a in accounts):
             raise ValueError("Email already in use.")
@@ -25,6 +25,7 @@ class AccountService:
             "name": name,
             "email": email,
             "password": encrypted_str,
+            "address": address,
             "isAdmin": False
         }
         accounts.append(account)
