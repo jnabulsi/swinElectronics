@@ -4,6 +4,8 @@ from app.services.UserService import UserService
 from app.services.ProductService import ProductService 
 from app.services.ShoppingCartService import ShoppingCartService
 from app.services.OrderService import OrderService
+from app.services.SalesReportService import SalesReportService
+
 
 DATA_DIR = Path(__file__).parent / "data"
 
@@ -20,3 +22,5 @@ userService = UserService(file_path=USERS_FILE)
 catalogService = ProductService(file_path=PRODUCTS_FILE)
 cartService = ShoppingCartService(file_path=CART_FILE)
 orderService = OrderService(file_path=ORDERS_FILE, catalog_path=PRODUCTS_FILE)
+salesReportService = SalesReportService(orderService, catalogService)
+

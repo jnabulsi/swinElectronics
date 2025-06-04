@@ -37,5 +37,12 @@
     "email": "test@good.com",
     "password": "09876543",
     "isAdmin": false
+  },
+  {
+    "id": 7,
+    "name": "j",
+    "email": "jordanabuli@gmail.com",
+    "password": "VL\"Ps_vZCqbR4AU",
+    "isAdmin": false
   }
 ]
