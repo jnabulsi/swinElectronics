@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api import products
+from app.routes import reports
+
 
 app = FastAPI()
 
@@ -17,3 +19,5 @@ app.add_middleware(
 )
 
 app.include_router(products.router, prefix="/api")
+app.include_router(reports.router)
+

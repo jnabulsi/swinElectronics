@@ -22,5 +22,21 @@
     "description": "24-inch Full HD monitor with IPS panel.",
     "image": "monitor.jpg",
     "category": "Displays"
+  },
+  {
+    "id": 4,
+    "title": "string",
+    "price": 0.0,
+    "description": "string",
+    "image": "string",
+    "category": "string"
+  },
+  {
+    "id": 5,
+    "title": "string",
+    "price": 0.0,
+    "description": "string",
+    "image": "string",
+    "category": "string"
   }
 ]
