@@ -4,9 +4,9 @@ Currently you can log in or sign up with any info for email and password.
 
 To log in as admin use:
 
-email:  admin
+email:  admin@gmail.com
 
-password: admin
+password: 12345678 
 
 There is a script that can install and run everything needed to start the web app up.
 To run the startup script you need to run these two commands in your terminal from this repo:
