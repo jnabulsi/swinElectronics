@@ -9,4 +9,5 @@ class Product(BaseModel):
     image: str
     category: str
     onSale: bool = False
+    vendor: str
 

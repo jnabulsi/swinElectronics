@@ -6,7 +6,8 @@
     "description": "Ergonomic wireless mouse with USB receiver.",
     "image": "mouse.jpg",
     "category": "Peripherals",
-    "onSale": true
+    "onSale": true,
+    "vendor": "Dell"
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "description": "RGB mechanical keyboard with blue switches.",
     "image": "keyboard.jpg",
     "category": "Peripherals",
-    "onSale": false
+    "onSale": false,
+    "vendor": "SteelSeries"
   },
   {
     "id": 3,
@@ -24,15 +26,17 @@
     "description": "24-inch Full HD monitor with IPS panel.",
     "image": "monitor.jpg",
     "category": "Displays",
-    "onSale": false
+    "onSale": false,
+    "vendor": "ASUS"
   },
   {
     "id": 4,
-    "title": "test",
-    "price": 60.0,
-    "description": "a test",
-    "image": "something.jpg",
+    "title": "Test",
+    "price": 12.0,
+    "description": "a NEW PRODUCT",
+    "image": "img.img",
     "category": "Computer",
-    "onSale": true
+    "onSale": false,
+    "vendor": "Dell"
   }
 ]

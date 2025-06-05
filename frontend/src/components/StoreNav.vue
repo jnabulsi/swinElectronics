@@ -18,9 +18,10 @@
     <v-btn text to="/">Products</v-btn>
     <!-- User options (if logged in) -->
     <template v-if="app.isLoggedIn">
-      <v-btn text to="/orders">Order History</v-btn>
-      <v-btn text to="/cart">Shopping Cart</v-btn>
-      <!-- <v-btn text to="/cart">Account</v-btn> -->
+      <template v-if="!app.isAdmin">
+        <v-btn text to="/orders">Order History</v-btn>
+        <v-btn text to="/cart">Shopping Cart</v-btn>
+      </template>
 
       <!-- Admin options -->
       <template v-if="app.isAdmin">

@@ -26,6 +26,8 @@
               <v-list-item-subtitle>Image: {{ item.image }}</v-list-item-subtitle>
               <v-list-item-subtitle>Category: {{ item.category }}</v-list-item-subtitle>
               <v-list-item-subtitle>On Sale: {{ item.onSale ? 'Yes' : 'No' }}</v-list-item-subtitle>
+              <v-list-item-subtitle>Vendor: {{ item.vendor }}</v-list-item-subtitle>
+
 
               <template #append>
                 <v-btn color="primary" @click="openEditModal(item)">Edit</v-btn>
@@ -46,6 +48,7 @@
           <v-textarea label="Description" v-model="editForm.description" />
           <v-text-field label="Image Filename" v-model="editForm.image" />
           <v-text-field label="Category" v-model="editForm.category" />
+          <v-text-field label="Vendor" v-model="editForm.vendor" />
           <v-switch label="On Sale" v-model="editForm.onSale" />
         </v-card-text>
         <v-card-actions>
@@ -72,6 +75,7 @@ const editForm = ref({
   description: '',
   image: '',
   category: '',
+  vendor: '',
   onSale: false,
 })
 

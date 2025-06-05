@@ -22,6 +22,8 @@
 
           <v-text-field v-model="category" label="Category" :rules="[requiredRule]" />
 
+          <v-text-field v-model="vendor" label="Vendor" :rules="[requiredRule]" />
+
           <v-btn type="submit" color="primary" block class="mt-4" :disabled="!formValid">
             Add Product
           </v-btn>
@@ -43,6 +45,7 @@ const price = ref(null)
 const description = ref('')
 const image = ref('')
 const category = ref('')
+const vendor = ref('')
 
 // Validation rules
 const requiredRule = (v) => !!v || 'This field is required'
@@ -57,6 +60,7 @@ const handleAddProduct = async () => {
     description: description.value,
     image: image.value,
     category: category.value,
+    vendor: vendor.value,
   }
 
   try {

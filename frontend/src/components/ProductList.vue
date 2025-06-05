@@ -23,6 +23,11 @@
         </div>
       </v-card-text>
 
+      <v-card-text v-if="app.isAdmin">
+        Vendor: {{ product.vendor }}
+      </v-card-text>
+
+
       <v-card-actions v-if="showAddToCartButton && app.isLoggedIn">
         <v-btn color="primary" block @click="$emit('button-click', product)">
           Add To Cart
