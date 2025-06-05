@@ -6,9 +6,9 @@
         SwinElectronic
       </v-toolbar-title>
 
-      <template v-if="app.isLoggedIn && app.user">
+      <template v-if="app.isLoggedIn && app.account">
         <div class="text-subtitle-2 pl-4" style="color: #E3F2FD;">
-          Hello, {{ app.user.name }}
+          Hello, {{ app.account.name }}
         </div>
       </template>
     </div>
