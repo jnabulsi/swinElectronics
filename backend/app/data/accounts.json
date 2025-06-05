@@ -14,5 +14,13 @@
     "password": "gAAAAABoP-jC9USmqgE3IFfpV0WvaiQ6sv-mYdokXAyiv8mCim_634bMyzc_Cku6KbdERk5I4BMiySU9rdwmfIosOcTzC4M5zA==",
     "address": "sample",
     "isAdmin": true
+  },
+  {
+    "id": 3,
+    "name": "jordan",
+    "email": "a@a.com",
+    "password": "gAAAAABoQUwppXJFJHOHxNHQlG8VMBpQBbH1AVE99BsH5d36YhK3UAL3ZHD9Moz-eagW4e_EmhpCgpyJQ8q23Bo-3pg-y4Osdw==",
+    "address": "11 house",
+    "isAdmin": false
   }
 ]

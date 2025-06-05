@@ -35,7 +35,8 @@ class OrderService:
             id=new_id,
             items=cart_items,
             total=total,
-            timestamp=melbourne_time.isoformat()
+            timestamp=melbourne_time.isoformat(),
+            shipment_status="Pending"
         )
 
         orders.append(order)

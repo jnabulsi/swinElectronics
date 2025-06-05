@@ -8,7 +8,11 @@
 
           <v-list>
             <v-list-item v-for="item in order?.items || []" :key="item.productId">
-              <v-list-item-title>Product ID: {{ item.productId }}</v-list-item-title>
+              <v-list-item-title>
+                Product: {{
+                  products.find(p => p.id === item.productId)?.title || `ID ${item.productId}`
+                }}
+              </v-list-item-title>
               <v-list-item-subtitle>Quantity: {{ item.quantity }}</v-list-item-subtitle>
             </v-list-item>
           </v-list>
@@ -32,9 +36,14 @@ import axios from 'axios'
 
 const route = useRoute()
 const order = ref(null)
+const products = ref([])
 
 onMounted(async () => {
-  const res = await axios.get(`/api/orders/${route.params.orderId}`)
-  order.value = res.data
+  const [orderRes, productsRes] = await Promise.all([
+    axios.get(`/api/orders/${route.params.orderId}`),
+    axios.get('/api/products')
+  ])
+  order.value = orderRes.data
+  products.value = productsRes.data
 })
 </script>

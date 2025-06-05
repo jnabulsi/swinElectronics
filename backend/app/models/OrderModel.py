@@ -8,3 +8,4 @@ class Order(BaseModel):
     items: List[CartItem]
     total: float
     timestamp: str 
+    shipment_status: str = "Pending"

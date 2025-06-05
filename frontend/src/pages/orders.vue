@@ -15,6 +15,10 @@
             Order #{{ order.id }} — {{ new Date(order.timestamp).toLocaleString() }}
           </v-card-title>
           <v-divider class="mb-2" />
+          <v-card-subtitle class="text-subtitle-2">
+            Shipment Status: <strong>{{ order.shipment_status }}</strong>
+          </v-card-subtitle>
+
 
           <v-list>
             <v-list-item v-for="item in order.items" :key="item.productId" class="d-flex justify-space-between">

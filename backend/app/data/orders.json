@@ -3,52 +3,24 @@
     "id": 1,
     "items": [
       {
-        "productId": 2,
-        "quantity": 1
-      },
-      {
         "productId": 1,
-        "quantity": 1
+        "quantity": 3
       }
     ],
-    "total": 119.94,
-    "timestamp": "2025-06-05T17:16:03.045521+10:00"
+    "total": 89.85,
+    "timestamp": "2025-06-05T17:53:33.225731+10:00",
+    "shipment_status": "Pending"
   },
   {
     "id": 2,
     "items": [
       {
         "productId": 1,
-        "quantity": 3
-      },
-      {
-        "productId": 2,
-        "quantity": 1
-      }
-    ],
-    "total": 179.83999999999997,
-    "timestamp": "2025-06-05T17:20:01.484429+10:00"
-  },
-  {
-    "id": 3,
-    "items": [
-      {
-        "productId": 1,
         "quantity": 1
       }
     ],
     "total": 29.95,
-    "timestamp": "2025-06-05T17:20:31.818746+10:00"
-  },
-  {
-    "id": 4,
-    "items": [
-      {
-        "productId": 1,
-        "quantity": 1
-      }
-    ],
-    "total": 29.95,
-    "timestamp": "2025-06-05T17:28:34.704698+10:00"
+    "timestamp": "2025-06-05T17:57:38.472924+10:00",
+    "shipment_status": "Pending"
   }
 ]
