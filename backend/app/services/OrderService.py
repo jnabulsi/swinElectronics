@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import List
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from app.models.OrderModel import Order
 from app.models.CartItemModel import CartItem
@@ -28,11 +29,13 @@ class OrderService:
         orders = self.load_orders()
         new_id = max((o.id for o in orders), default=0) + 1
 
+        melbourne_time = datetime.now(ZoneInfo("Australia/Melbourne"))
+
         order = Order(
             id=new_id,
             items=cart_items,
             total=total,
-            timestamp=datetime.utcnow()
+            timestamp=melbourne_time.isoformat()
         )
 
         orders.append(order)

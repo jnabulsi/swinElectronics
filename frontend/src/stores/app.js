@@ -9,18 +9,18 @@ export const useAppStore = defineStore('app', {
   }),
 
   actions: {
-    async login(email, password){
-      try{
-        const resp = await login({email, password})
+    async login(email, password) {
+      try {
+        const resp = await login({ email, password })
         this.account = resp.data
         this.isLoggedIn = true
-        
-        if(this.account && this.account.isAdmin == true){
+
+        if (this.account && this.account.isAdmin == true) {
           this.isAdmin = true
-        } else{
+        } else {
           this.isAdmin = false
         }
-      } catch(error) {
+      } catch (error) {
         console.log(error.response.data)
         throw error
       }
@@ -33,7 +33,7 @@ export const useAppStore = defineStore('app', {
         this.user = resp.data
         this.isLoggedIn = true
         this.isAdmin = false
-        
+
       } catch (error) {
         console.log(error.response.data)
         throw error
@@ -41,7 +41,6 @@ export const useAppStore = defineStore('app', {
     },
 
     logout() {
-      // TODO: Replace with actual API call
       this.isLoggedIn = false
       this.isAdmin = false
     },

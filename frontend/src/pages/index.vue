@@ -23,6 +23,7 @@
         <ProductList :products="filteredProducts" :showAddToCartButton="true" @button-click="handleAddToCart" />
       </v-col>
     </v-row>
+
     <v-snackbar v-model="snackbar" :timeout="3000" color="success" location="top right" elevation="6" rounded="pill">
       {{ snackbarMessage }}
     </v-snackbar>

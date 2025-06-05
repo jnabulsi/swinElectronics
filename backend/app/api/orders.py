@@ -22,3 +22,11 @@ def complete_purchase():
 def get_orders():
     return orderService.load_orders()
 
+@router.get("/orders/{order_id}", response_model=Order)
+def get_order_by_id(order_id: int):
+    orders = orderService.load_orders()
+    for order in orders:
+        if order.id == order_id:
+            return order
+    raise HTTPException(status_code=404, detail="Order not found")
+

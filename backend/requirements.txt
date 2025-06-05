@@ -4,4 +4,4 @@ python-dotenv
 pydantic
 aiofiles
 pydantic[email]
-
+cryptography

@@ -7,4 +7,4 @@ class Order(BaseModel):
     id: int
     items: List[CartItem]
     total: float
-    timestamp: datetime
+    timestamp: str 

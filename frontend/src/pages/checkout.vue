@@ -77,9 +77,8 @@ onMounted(async () => {
 })
 
 const handlePurchase = async () => {
-  const productIds = products.value.map(item => item.id)
-  console.log('Purchase submitted:', productIds)
-  await completePurchase(productIds)
-  router.push('/')
+  const res = await completePurchase()
+  const orderId = res.data.id
+  router.push(`/receipt/${orderId}`)
 }
 </script>

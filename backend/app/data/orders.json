@@ -3,12 +3,16 @@
     "id": 1,
     "items": [
       {
+        "productId": 2,
+        "quantity": 1
+      },
+      {
         "productId": 1,
-        "quantity": 3
+        "quantity": 1
       }
     ],
-    "total": 89.97,
-    "timestamp": "2025-05-30 01:48:12.089735"
+    "total": 119.94,
+    "timestamp": "2025-06-05T17:16:03.045521+10:00"
   },
   {
     "id": 2,
@@ -16,46 +20,35 @@
       {
         "productId": 1,
         "quantity": 3
+      },
+      {
+        "productId": 2,
+        "quantity": 1
       }
     ],
-    "total": 89.97,
-    "timestamp": "2025-05-30 01:48:43.212763"
+    "total": 179.83999999999997,
+    "timestamp": "2025-06-05T17:20:01.484429+10:00"
   },
   {
     "id": 3,
     "items": [
       {
-        "productId": 2,
+        "productId": 1,
         "quantity": 1
-      },
-      {
-        "productId": 3,
-        "quantity": 2
       }
     ],
-    "total": 489.97,
-    "timestamp": "2025-05-30 01:56:20.934229"
+    "total": 29.95,
+    "timestamp": "2025-06-05T17:20:31.818746+10:00"
   },
   {
     "id": 4,
     "items": [
       {
-        "productId": 2,
+        "productId": 1,
         "quantity": 1
       }
     ],
-    "total": 89.99,
-    "timestamp": "2025-05-30 01:58:43.103663"
-  },
-  {
-    "id": 5,
-    "items": [
-      {
-        "productId": 2,
-        "quantity": 1
-      }
-    ],
-    "total": 89.99,
-    "timestamp": "2025-05-30 02:00:16.062642"
+    "total": 29.95,
+    "timestamp": "2025-06-05T17:28:34.704698+10:00"
   }
 ]
