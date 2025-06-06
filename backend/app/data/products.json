@@ -28,15 +28,5 @@
     "category": "Displays",
     "onSale": false,
     "vendor": "ASUS"
-  },
-  {
-    "id": 4,
-    "title": "Test",
-    "price": 12.0,
-    "description": "a NEW PRODUCT",
-    "image": "img.img",
-    "category": "Computer",
-    "onSale": false,
-    "vendor": "Dell"
   }
 ]
